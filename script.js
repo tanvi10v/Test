@@ -42,11 +42,41 @@ document.addEventListener('DOMContentLoaded', () => {
             // Append to the body or a specific container
             document.body.appendChild(clonedBubble);
 
-            // Add event listener to its close button
+            // Get references to elements within the cloned bubble
             const closeButton = clonedBubble.querySelector('.close-bubble');
+            const userInput = clonedBubble.querySelector('.user-input');
+            const sendButton = clonedBubble.querySelector('.send-button');
+            const conversationContent = clonedBubble.querySelector('.conversation-content');
+
+            // Ensure the input field is initially empty for the new bubble
+            if (userInput) {
+                userInput.value = '';
+            }
+
+            // Add event listener to its close button
             if (closeButton) {
                 closeButton.addEventListener('click', () => {
                     clonedBubble.remove();
+                });
+            }
+
+            // Add event listener to its send button
+            if (sendButton && userInput && conversationContent) {
+                sendButton.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent potential default form submission behavior
+                    const messageText = userInput.value.trim();
+
+                    if (messageText !== '') {
+                        const messageElement = document.createElement('p');
+                        messageElement.textContent = messageText;
+                        messageElement.classList.add('user-message'); // For potential styling
+
+                        conversationContent.appendChild(messageElement);
+                        userInput.value = ''; // Clear the input field
+
+                        // Scroll to the bottom of the conversation
+                        conversationContent.scrollTop = conversationContent.scrollHeight;
+                    }
                 });
             }
         });
