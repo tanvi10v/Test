@@ -96,3 +96,22 @@ body {
     margin-top: 10px; /* Add some space above the close button */
     float: right; /* Keep it floated right */
 }
+
+#selection-trigger {
+    background-color: #4CAF50; /* Green, consistent with send button */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circular shape */
+    padding: 8px; /* Adjust padding for icon size */
+    font-size: 18px; /* Adjust for emoji icon */
+    cursor: pointer;
+    z-index: 1050; /* High z-index to appear above other elements */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
+    /* For ensuring the emoji is centered in the circle */
+    display: inline-flex; /* Or flex, if not already display:none via inline style */
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Fixed width for a circle */
+    height: 40px; /* Fixed height for a circle */
+    line-height: 1; /* Reset line-height if emoji has extra space */
+}
